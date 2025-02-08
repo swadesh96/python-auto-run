@@ -17,3 +17,9 @@ jobs:
         run: |
           echo "${{ secrets.ABC }}" > auth.txt
           echo "${{ secrets.ABC123 }}" >> auth.txt
+
+      - name: Verify auth.txt content (Optional, remove in production)
+        run: cat auth.txt
+
+      - name: Use auth.txt (Example: Move to a specific directory)
+        run: mv auth.txt /tmp/auth.txt
