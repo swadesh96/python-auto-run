@@ -15,11 +15,11 @@ jobs:
 
       - name: Create auth.txt from GitHub Secrets
         run: |
-          echo "${{ secrets.ABC }}" > auth.txt
-          echo "${{ secrets.ABC123 }}" >> auth.txt
+          echo "${{ secrets.AUTH_USERNAME }}" > auth.txt
+          echo "${{ secrets.AUTH_PASSWORD }}" >> auth.txt
 
-      - name: Verify auth.txt content (Optional, remove in production)
-        run: cat auth.txt
-
-      - name: Use auth.txt (Example: Move to a specific directory)
-        run: mv auth.txt /tmp/auth.txt
+      - name: Upload auth.txt as an artifact (Downloadable)
+        uses: actions/upload-artifact@v4
+        with:
+          name: auth-file
+          path: auth.txt
