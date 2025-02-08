@@ -1,0 +1,19 @@
+name: Create Auth File
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  create-auth-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create auth.txt from GitHub Secrets
+        run: |
+          echo "${{ secrets.ABC }}" > auth.txt
+          echo "${{ secrets.ABC123 }}" >> auth.txt
